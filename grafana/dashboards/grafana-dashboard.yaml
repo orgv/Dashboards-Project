@@ -2,6 +2,7 @@ apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
 metadata:
   name: sample-dashboard
+  namespace: grafana
 spec:
   resyncPeriod: 30s
   instanceSelector:
@@ -9,7 +10,7 @@ spec:
       dashboards: "grafana"
   json: >
     {
-      "title": "My GIT Dashboard",
+      "title": "My [GIT] Dashboard",
       "timezone": "browser",
       "refresh": "5s",
       "panels": [],
