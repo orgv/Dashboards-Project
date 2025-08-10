@@ -10,7 +10,7 @@ spec:
       dashboards: "grafana"
   json: >
     {
-      "title": "My [GIT-TEST] Dashboard",
+      "title": "My [GIT-TEST-BLANK] Dashboard",
       "timezone": "browser",
       "refresh": "5s",
       "panels": [],
