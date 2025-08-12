@@ -1,5 +1,5 @@
 {{- range $path, $bytes := .Files.Glob "files/datasources/*.yaml" }}
-{{- $ds := fromYaml $bytes }}
+{{- $ds := fromYaml (toString $bytes) }}
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDatasource
 metadata:
