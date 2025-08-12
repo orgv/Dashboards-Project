@@ -9,6 +9,6 @@ spec:
     matchLabels:
       dashboards: {{ $.Values.instanceLabel }}
   json: |-
-{{ $bytes | indent 4 }}
+{{ (toString $bytes) | indent 4 }}
 ---
 {{- end }}
