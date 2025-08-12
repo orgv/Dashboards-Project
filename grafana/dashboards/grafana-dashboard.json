@@ -1,0 +1,10 @@
+{
+  "title": "My [GIT-TEST-BLANK-FROM-JSON] Dashboard",
+  "timezone": "browser",
+  "refresh": "5s",
+  "panels": [],
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  }
+}
