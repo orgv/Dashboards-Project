@@ -3,7 +3,7 @@
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDatasource
 metadata:
-  name: {{ lower (replace $ds.name " " "-" ) }}
+  name: {{ $ds.name }}
   namespace: {{ $.Values.namespace }}
 spec:
   instanceSelector:
