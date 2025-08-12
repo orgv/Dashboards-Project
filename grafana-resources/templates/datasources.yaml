@@ -1,0 +1,21 @@
+{{- range $path, $bytes := .Files.Glob "files/datasources/*.yaml" }}
+{{- $ds := fromYaml $bytes }}
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDatasource
+metadata:
+  name: {{ lower (replace $ds.name " " "-" ) }}
+  namespace: {{ $.Values.namespace }}
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: {{ $.Values.instanceLabel }}
+  datasource:
+    name: {{ $ds.name }}
+    type: {{ $ds.type }}
+    access: proxy
+    url: {{ $ds.url }}
+    {{- if hasKey $ds "isDefault" }}
+    isDefault: {{ $ds.isDefault }}
+    {{- end }}
+---
+{{- end }}
