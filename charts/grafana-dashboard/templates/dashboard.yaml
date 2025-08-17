@@ -1,0 +1,11 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: {{ .Values.name | lower | replace " " "-" }}
+  namespace: {{ .Values.namespace }}
+spec:
+  instanceSelector:
+    matchLabels:
+      dashboards: {{ .Values.instanceLabel }}
+  json: |-
+{{ .Values.json | indent 4 }}

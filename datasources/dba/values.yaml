@@ -1,4 +1,6 @@
 name: prometheus
+namespace: grafana
+instanceLabel: grafana
 type: prometheus
 url: http://prometheus-server.prometheus.svc.cluster.local:80
 isDefault: true
