@@ -3,6 +3,7 @@ kind: ApplicationSet
 metadata:
   name: grafana-resources
 spec:
+  goTemplate: true
   generators:
     - git:
         repoURL: https://github.com/orgv/Dashboards-Project.git
@@ -12,16 +13,16 @@ spec:
           - path: dashboards/*
   template:
     metadata:
-      name: '{{path.basename}}-{{path.parent}}'
+      name: '{{replace "/" "-" .path.path}}'
     spec:
       project: default
       source:
         repoURL: https://github.com/orgv/Dashboards-Project.git
         targetRevision: main
-        path: charts/grafana-{{path.parent | replace "dashboards" "dashboard" | replace "datasources" "datasource"}}   # maps to grafana-datasource or grafana-dashboard chart
+        path: charts/grafana-{{index .path.segments 0}}   # maps to grafana-datasources or grafana-dashboards chart
         helm:
           valueFiles:
-            - '{{path}}/values.yaml'
+            - '{{.path.path}}/values.yaml'
       destination:
         server: https://kubernetes.default.svc
         namespace: grafana
