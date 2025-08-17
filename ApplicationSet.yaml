@@ -12,13 +12,13 @@ spec:
           - path: dashboards/*
   template:
     metadata:
-      name: '{{path.basename}}-{{path.dirname}}'
+      name: '{{path.basename}}-{{path.parent}}'
     spec:
       project: default
       source:
         repoURL: https://github.com/orgv/Dashboards-Project.git
         targetRevision: main
-        path: charts/grafana-{{path.dirname | replace "dashboards" "dashboard" | replace "datasources" "datasource"}}   # maps to grafana-datasource or grafana-dashboard chart
+        path: charts/grafana-{{path.parent | replace "dashboards" "dashboard" | replace "datasources" "datasource"}}   # maps to grafana-datasource or grafana-dashboard chart
         helm:
           valueFiles:
             - '{{path}}/values.yaml'
