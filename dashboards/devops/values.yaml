@@ -1,4 +1,4 @@
-name: team-a-dashboard
+name: devops-dashboard
 namespace: grafana
 instanceLabel: grafana
 json: |

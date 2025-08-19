@@ -22,7 +22,8 @@ spec:
         path: charts/grafana-{{index .path.segments 0}}   # maps to grafana-datasources or grafana-dashboards chart
         helm:
           valueFiles:
-            - '{{.path.path}}/values.yaml'
+            - '../../{{.path.path}}/values.yaml'
+          releaseName: '{{replace "/" "-" .path.path}}' # for some reason it is overriding...
       destination:
         server: https://kubernetes.default.svc
         namespace: grafana
