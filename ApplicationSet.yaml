@@ -8,9 +8,9 @@ spec:
     - git:
         repoURL: https://github.com/orgv/Dashboards-Project.git
         revision: main
-        directories:
-          - path: datasources/*   # matches team folders
-          - path: dashboards/*
+        files:
+          - path: datasources/*/values.yaml   # matches team folders
+          - path: dashboards/*/values.yaml
   template:
     metadata:
       name: '{{replace "/" "-" .path.path}}'
@@ -22,8 +22,7 @@ spec:
         path: charts/grafana-{{index .path.segments 0}}   # maps to grafana-datasources or grafana-dashboards chart
         helm:
           valueFiles:
-            - '../../{{.path.path}}/values.yaml'
-          releaseName: '{{replace "/" "-" .path.path}}' # for some reason it is overriding...
+            - '{{.path.path}}'
       destination:
         server: https://kubernetes.default.svc
         namespace: grafana
