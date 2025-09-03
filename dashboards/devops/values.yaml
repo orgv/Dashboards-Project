@@ -1,6 +1,4 @@
 name: devops-dashboard
-namespace: grafana
-instanceLabel: grafana
 json: |
   {
     "uid": "devops-dashboard",

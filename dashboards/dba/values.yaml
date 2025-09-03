@@ -1,6 +1,4 @@
 name: dba-dashboard
-namespace: grafana
-instanceLabel: grafana
 json: |
   {
     "uid": "dba-dashboard",
